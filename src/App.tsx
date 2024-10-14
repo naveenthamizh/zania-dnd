@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useDragAndDrop } from "./Hooks/useDragAndDrop";
 
@@ -7,10 +7,11 @@ import { TSelectedCard } from "./types";
 
 import { Modal } from "./Components/Modal";
 
-import "./App.css";
 import { INTIAL_CARDS_ALIGNMENT } from "./common/contants";
 import { useAutosave } from "./Hooks/useAutosave";
 import { getTimeFromNow } from "./common/helpers/datehelpers";
+
+import "./App.css";
 
 const App = (): JSX.Element => {
   const containerRef = useRef(null);
@@ -40,10 +41,13 @@ const App = (): JSX.Element => {
       );
   }, []);
 
-  const updateCardOrder = useCallback((cards: TSelectedCard[]) => {
-    setCards(cards);
-    setDataToSave(cards);
-  }, []);
+  const updateCardOrder = useCallback(
+    (cards: TSelectedCard[]) => {
+      setCards(cards);
+      setDataToSave(cards);
+    },
+    [setDataToSave]
+  );
   return (
     <main ref={containerRef} className="container">
       <div className="syncTimer">

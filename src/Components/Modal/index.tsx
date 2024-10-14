@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom";
 import { MdClose } from "react-icons/md";
+import { useCallback, useEffect } from "react";
 
 import { TModalProps } from "./types";
 
-import { useCallback, useEffect } from "react";
 import styles from "./modal.module.css";
 
 export const Modal = (props: TModalProps): JSX.Element => {
@@ -11,11 +11,14 @@ export const Modal = (props: TModalProps): JSX.Element => {
 
   const rootElement = document.getElementById("root");
 
-  const handleKeyDown = useCallback((event: KeyboardEvent) => {
-    if (event.key === "Escape") {
-      onClose();
-    }
-  }, []);
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);

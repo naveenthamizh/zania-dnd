@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback, RefObject } from "react";
-import { INTIAL_CARDS_ALIGNMENT } from "../common/contants";
+import { useState, useEffect, useCallback } from "react";
 import { TSelectedCard } from "../types";
 
 export const useDragAndDrop = (

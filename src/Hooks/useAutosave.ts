@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useEffect, useState } from "react";
+import { useCallback, useRef, useEffect, useState } from "react";
 import { TSelectedCard } from "../types";
 
 type TAutoSave = {
@@ -37,7 +37,7 @@ export const useAutosave = (props: TAutoSave) => {
         hasChanges.current = false;
       })
       .finally(() => setIsSaving(false));
-  }, [props?.items]);
+  }, [dataToSave, props.items]);
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
