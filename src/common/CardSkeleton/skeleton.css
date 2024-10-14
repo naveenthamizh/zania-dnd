@@ -1,0 +1,24 @@
+.card {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  transition: transform 0.3s, background-color 0.2s;
+  border-radius: 4px;
+}
+
+.rotating {
+  animation: rotating 2s linear infinite;
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
